@@ -66,13 +66,53 @@ class binarySearchTree {
     if (!root.right) {
       return root.value;
     } else {
-     return this.min(root.right);
+      return this.min(root.right);
     }
+  }
+
+  levelOrder() {
+    let queue = [this.root];
+    while (queue.length) {
+      let curr = queue.shift();
+      console.log(curr.value);
+      if (curr.left) {
+        queue.push(curr.left);
+        if (curr.right) {
+          queue.push(curr.right);
+        }
+      }
+    }
+  }
+
+  delete(value) {
+    this.root = this.deleteNode(this.root, value);
+  }
+
+  deleteNode(root, value) {
+    if (root === null) {
+      return root;
+    }
+    if (root.value > value) {
+      this.deleteNode(root.left, value);
+    } else if (root.value < value) {
+      this.deleteNode(root.right, value);
+    } else {
+      if (!root.left && !root.right) {
+        return null;
+      }
+      if (!root.left) {
+        return root.right;
+      } else if (!root.right) {
+        return root.left;
+      }
+      root.value = this.min(root.right);
+      root.right = this.deleteNode(root.right, value);
+    }
+    return root;
   }
 }
 
 const bst = new binarySearchTree();
-console.log(bst.isEmpty());
 bst.insert(10);
 bst.insert(15);
 bst.insert(12);
@@ -80,7 +120,5 @@ bst.insert(25);
 bst.insert(5);
 bst.insert(8);
 bst.insert(3);
-console.log(bst.search(12));
-console.log(bst.isEmpty());
-console.log(bst.min());
-console.log(bst.max());
+bst.delete(3);
+bst.levelOrder();
