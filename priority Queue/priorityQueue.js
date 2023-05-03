@@ -85,8 +85,6 @@ const node=new Node(val,priority)
   pQueue.enqueue('leg injury',8)
   pQueue.enqueue('lose motion',4)
   pQueue.display();
-  console.log('/////');
   console.log(pQueue.dequeue())
-  console.log('////');
   pQueue.display();
   
