@@ -3,6 +3,12 @@ class maxBinaryHeap {
     this.values = [];
   }
 
+  heapify(arr){
+    while(arr.length>0){
+    this.insert(arr.shift())
+    }
+  }
+  
   insert(val) {
     this.values.push(val);
     this.bubbleUp();
@@ -71,14 +77,7 @@ class maxBinaryHeap {
 }
 
 const heap = new maxBinaryHeap();
-heap.insert(41);
-heap.insert(33);
-heap.insert(39);
-heap.insert(18);
-heap.insert(27);
-heap.insert(12);
+heap.heapify([18,21,41,33,39,12,58])
 heap.display();
-heap.insert(55);
-heap.display();
-console.log(heap.extractMax())
+heap.extractMax()
 heap.display();
