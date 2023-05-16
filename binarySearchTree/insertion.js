@@ -39,6 +39,7 @@ class binarySearchTree {
       }
     }
   }
+  
 }
 
 const bst = new binarySearchTree();

@@ -57,22 +57,35 @@ bfs(v){
     
 }
 
-findAllPaths(start, end, path = []) {
-    path.push(start);
-    if (start === end) {
-      // We have found a path from start to end
-      console.log(path);
-    } else {
-      for (let neighbor of this.adjacencyList[start]) {
-        if (!path.includes(neighbor)) {
-          // Recursively explore neighbor vertices
-          this.findAllPaths(neighbor, end, path);
+// findAllPaths(start, end, path = []) {
+//     path.push(start);
+//     if (start === end) {
+//       // We have found a path from start to end
+//       console.log(path);
+//     } else {
+//       for (let neighbor of this.adjacencyList[start]) {
+//         if (!path.includes(neighbor)) {
+//           // Recursively explore neighbor vertices
+//           this.findAllPaths(neighbor, end, path);
+//         }
+//       }
+//     }
+//     // Remove start vertex from visited set and path array
+//     path.pop();
+//   }
+
+findAllPaths(start,end,path=[]){
+    path.push(start) 
+    if(start===end){
+        console.log(path); 
+    }else{
+        for(let neighbor of this.adjacencyList[start]){
+            if(!path.includes(neighbor))
+            this.findAllPaths(neighbor,end,path)
         }
-      }
     }
-    // Remove start vertex from visited set and path array
-    path.pop();
-  }
+    path.pop()
+}
 }
 
 const graph=new Graph()
