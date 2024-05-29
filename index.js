@@ -11,4 +11,4 @@ class Heap{
 
     heapify(arr)
 }
-4, 10, 3, 5, 1
+4, 10, 3, 5, 1, 6
